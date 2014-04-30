@@ -44,7 +44,7 @@ Last-Update: <YYYY-MM-DD>
 +bin = '%s/usr/bin' % instdir
 +etc = '%s/etc' % instdir
 +
-+env_statsite_with_err.InstallAs(bin+'/graphite-sink.py ', graphite_sink)
++env_statsite_with_err.InstallAs(bin+'/graphite-sink.py', graphite_sink)
 +env_statsite_with_err.Install(bin, statsite)
 +env_statsite_with_err.Install(etc, statsite_conf)
 +
