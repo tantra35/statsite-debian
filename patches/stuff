@@ -25,12 +25,20 @@ Last-Update: <YYYY-MM-DD>
 
 --- a/SConstruct
 +++ b/SConstruct
-@@ -29,7 +29,23 @@
+@@ -29,7 +29,32 @@
     statsite_libs.append("rt")
  
  statsite = env_statsite_with_err.Program('statsite', objs + ["src/statsite.c"], LIBS=statsite_libs)
 +statsite_conf = env_statsite_with_err.File('src/statsite.conf')
++
++binary_sink = env_statsite_with_err.File('sinks/binary_sink.py')
 +graphite_sink = env_statsite_with_err.File('sinks/graphite.py')
++gmetric_sink = env_statsite_with_err.File('sinks/gmetric.py')
++influxdb_sink = env_statsite_with_err.File('sinks/influxdb.py')
++librato_sink = env_statsite_with_err.File('sinks/librato.py')
++json_sink = env_statsite_with_err.File('sinks/statsite_json_sink.rb')
++
++
  statsite_test = env_statsite_without_err.Program('test_runner', objs + Glob("tests/runner.c"), LIBS=statsite_libs + ["check"])
  
  # By default, only compile statsite
@@ -43,12 +51,13 @@ Last-Update: <YYYY-MM-DD>
 +
 +bin = '%s/usr/bin' % instdir
 +etc = '%s/etc' % instdir
++share = '%s/usr/share/statsite' % instdir
 +
-+env_statsite_with_err.InstallAs(bin+'/graphite-sink.py', graphite_sink)
 +env_statsite_with_err.Install(bin, statsite)
++env_statsite_with_err.Install(share, [binary_sink,graphite_sink,gmetric_sink,influxdb_sink,librato_sink])
 +env_statsite_with_err.Install(etc, statsite_conf)
 +
-+env_statsite_with_err.Alias('install', [bin, etc])
++env_statsite_with_err.Alias('install', [bin, etc, share])
 --- /dev/null
 +++ b/src/statsite.conf
 @@ -0,0 +1,10 @@
@@ -59,6 +68,6 @@ Last-Update: <YYYY-MM-DD>
 +flush_interval = 10
 +timer_eps = 0.01
 +set_eps = 0.02
-+stream_cmd = python -d /usr/bin/graphite-sink.py localhost 2003 ""
++stream_cmd = python -d /usr/share/statsite/graphite.py localhost 2003 ""
 +use_type_prefix=0
 +

@@ -1,4 +1,11 @@
-statsite (0.6.0+git20-3) UNRELEASED; urgency=medium
+statsite (0.6.5-1) UNRELEASED; urgency=medium
+
+  * New upstream release.
+  * Proper path for sinks.
+
+ -- Daniil Guzanov <melkor217@gmail.com>  Mon, 05 May 2014 13:19:34 +0400
+
+statsite (0.6.0+git20-3) unstable; urgency=medium
 
   * Added graphite sync.
   * Fixed sync name.
