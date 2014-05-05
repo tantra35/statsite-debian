@@ -5,11 +5,10 @@ Maintainer: Daniil Guzanov <melkor217@gmail.com>
 Build-Depends: debhelper (>= 8.0.0), scons, cdbs, check
 Standards-Version: 3.9.4
 Homepage: https://github.com/armon/statsite
-#Vcs-Git: git://git.debian.org/collab-maint/statsite.git
-#Vcs-Browser: http://git.debian.org/?p=collab-maint/statsite.git;a=summary
+Vcs-Git: https://github.com/armon/statsite.git
+Vcs-Browser: https://github.com/armon/statsite
 
 Package: statsite
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, python
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: C implementation of statsd
