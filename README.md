@@ -12,4 +12,4 @@ How-to
     $ git clone https://github.com/melkor217/statsite-debian.git statsite/debian
     $ cd statsite 
     $ debuild -us -uc # Build it. A couple of build dependencies must be installed via apt or something
-    $ dpkg -i statsite_0.6.5-1_amd64.deb # Enjoy!
+    $ sudo dpkg -i statsite_0.6.5-1_amd64.deb # Enjoy!
