@@ -1,9 +1,9 @@
 Source: statsite
-Section: unknown
+Section: net
 Priority: optional
 Maintainer: Daniil Guzanov <melkor217@gmail.com>
 Build-Depends: debhelper (>= 8.0.0), scons, cdbs, check
-Standards-Version: 3.9.4
+Standards-Version: 3.9.6
 Homepage: https://github.com/armon/statsite
 Vcs-Git: https://github.com/armon/statsite.git
 Vcs-Browser: https://github.com/armon/statsite
@@ -11,4 +11,6 @@ Vcs-Browser: https://github.com/armon/statsite
 Package: statsite
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, python
-Description: C implementation of statsd
+Recommends: graphite-carbon
+Description: Metrics aggregation server.
+ It is based heavily on Etsy's StatsD and is wire compatible.
