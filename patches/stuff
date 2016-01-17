@@ -25,8 +25,8 @@ Last-Update: <YYYY-MM-DD>
 
 --- a/SConstruct
 +++ b/SConstruct
-@@ -29,7 +29,32 @@
-    statsite_libs.append("rt")
+@@ -45,7 +45,32 @@
+    statsite_libs.append(["socket", "nsl"])
  
  statsite = env_statsite_with_err.Program('statsite', objs + ["src/statsite.c"], LIBS=statsite_libs)
 +statsite_conf = env_statsite_with_err.File('src/statsite.conf')
