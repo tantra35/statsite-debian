@@ -25,9 +25,9 @@ Last-Update: <YYYY-MM-DD>
 
 --- a/SConstruct
 +++ b/SConstruct
-@@ -45,7 +45,32 @@
+@@ -50,7 +50,33 @@
     statsite_libs.append(["socket", "nsl"])
- 
+
  statsite = env_statsite_with_err.Program('statsite', objs + ["src/statsite.c"], LIBS=statsite_libs)
 +statsite_conf = env_statsite_with_err.File('src/statsite.conf')
 +
@@ -40,9 +40,8 @@ Last-Update: <YYYY-MM-DD>
 +opentsdb_sink = env_statsite_with_err.File('sinks/opentsdb.js')
 +json_sink = env_statsite_with_err.File('sinks/statsite_json_sink.rb')
 +
-+
  statsite_test = env_statsite_without_err.Program('test_runner', objs + Glob("tests/runner.c"), LIBS=statsite_libs + ["check"])
- 
+
  # By default, only compile statsite
  Default(statsite)
 +
