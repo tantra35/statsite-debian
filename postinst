@@ -1,0 +1,46 @@
+#!/bin/sh
+set -e
+
+addstatsiteuser() {
+    # creating statsite group if he isn't already there
+    if ! getent group statsite >/dev/null; then
+        addgroup --system statsite >/dev/null
+    fi
+
+    # creating statsite user if he isn't already there
+    if ! getent passwd statsite >/dev/null; then
+        adduser \
+          --system \
+          --disabled-login \
+          --ingroup nginx \
+          --no-create-home \
+          --home /nonexistent \
+          --gecos "nginx user" \
+          --shell /bin/false \
+          statsite  >/dev/null
+    fi
+}
+
+case "$1" in
+    configure)
+        addstatsiteuser
+        ;;
+    install)
+        addstatsiteuser
+        ;;
+    upgrade)
+        addstatsiteuser
+        ;;
+
+    abort-upgrade)
+        ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 0
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
