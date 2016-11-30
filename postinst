@@ -12,10 +12,10 @@ addstatsiteuser() {
         adduser \
           --system \
           --disabled-login \
-          --ingroup nginx \
+          --ingroup statsite \
           --no-create-home \
           --home /nonexistent \
-          --gecos "nginx user" \
+          --gecos "statsite user" \
           --shell /bin/false \
           statsite  >/dev/null
     fi
